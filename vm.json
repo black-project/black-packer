@@ -1,0 +1,41 @@
+{
+    "description": "Create a fresh new VirtualMachine for your Black Project",
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Debian_64",
+            "iso_url": "http://cdimage.debian.org/debian-cd/7.5.0/amd64/iso-cd/debian-7.5.0-amd64-CD-1.iso",
+            "iso_checksum": "ce63697ade79f3d1b429d1adfbd7b092",
+            "iso_checksum_type": "md5",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_wait_timeout": "10s",
+            "shutdown_command": "echo 'packer | sudo -S shutdown -P now",
+            "boot_command": [
+
+            ],
+            "boot_wait": "10s",
+            "disk_size": 10000,
+            "vboxmanage": [
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
+                    "2048"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
+                    "1"
+                ]
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "output": "packer/boxes/packer_{{.BuildName}}_{{.Provider}}.box"
+        }
+    ]
+}
