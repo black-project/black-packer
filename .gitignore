@@ -1,1 +1,2 @@
-packer/boxes
+packer/boxes/*
+packer_cache
