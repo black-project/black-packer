@@ -1,2 +1,3 @@
 packer/box/*
 packer_cache
+.vagrant
