@@ -4,12 +4,11 @@
         {
             "type": "virtualbox-iso",
             "guest_os_type": "Debian_64",
-            "iso_url": "http://cdimage.debian.org/debian-cd/7.5.0/amd64/iso-cd/debian-7.5.0-amd64-CD-1.iso",
-            "iso_checksum": "ce63697ade79f3d1b429d1adfbd7b092",
+            "iso_url": "http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.5.0-amd64-netinst.iso",
+            "iso_checksum": "8fdb6715228ea90faba58cb84644d296",
             "iso_checksum_type": "md5",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
-            "ssh_wait_timeout": "10s",
             "shutdown_command": "echo 'packer | sudo -S shutdown -P now",
             "boot_command": [
                 "<esc><wait>",
@@ -22,9 +21,9 @@
                 "netcfg/get_hostname={{ .Name }} <wait>",
                 "netcfg/get_domain=vagrantup.com <wait>",
                 "fb=false <wait>",
-                "debconf/frontend=noninteractive <wait>",
                 "console-setup/ask_detect=false <wait>",
                 "console-keymaps-at/keymap=us <wait>",
+                "keyboard-configuration/xkb-keymap=us <wait>",
                 "<enter><wait>"
             ],
             "http_directory": "packer/support/preseed",
