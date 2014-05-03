@@ -48,7 +48,7 @@
     "post-processors": [
         {
             "type": "vagrant",
-            "output": "packer/boxes/packer_{{.BuildName}}_{{.Provider}}.box"
+            "output": "packer/box/blackbox.box"
         }
     ]
 }
