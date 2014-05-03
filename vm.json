@@ -9,7 +9,7 @@
             "iso_checksum_type": "md5",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
-            "shutdown_command": "echo 'packer | sudo -S shutdown -P now",
+            "shutdown_command": "sudo -S shutdown -h now",
             "boot_command": [
                 "<esc><wait>",
                 "install <wait>",
