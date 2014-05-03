@@ -26,7 +26,7 @@
                 "keyboard-configuration/xkb-keymap=us <wait>",
                 "<enter><wait>"
             ],
-            "http_directory": "packer/support/preseed",
+            "http_directory": "packer/support/http",
             "boot_wait": "10s",
             "disk_size": 10000,
             "vboxmanage": [
