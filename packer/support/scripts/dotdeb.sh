@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apt-get install -y \
+sudo apt-get install -y \
     nginx-full \
     php5-fpm \
     php5-cli \
