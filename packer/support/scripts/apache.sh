@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sudo apt-get remove -y apache2
+sudo service apache2 stop
+sudo apt-get remove -y apache*
