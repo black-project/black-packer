@@ -18,7 +18,10 @@ to contribute.
 
 The default Nginx work for a Symfony project.
 
-### Step 1: Installation
+## Installation
+
+### Step 1: Your first box
+
 - First install [Packer][1].
 - Now, install [VirtualBox][2].
 - And then, install [Vagrant][3].
