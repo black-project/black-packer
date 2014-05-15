@@ -47,6 +47,11 @@
     ],
     "provisioners": [
         {
+            "type": "file",
+            "source": "packer/support/config/",
+            "destination": "/tmp/"
+        },
+        {
             "type": "shell",
             "execute_command": "echo 'vagrant'| sudo -S sh '{{.Path}}'",
             "scripts": [
@@ -66,7 +71,7 @@
     "post-processors": [
         {
             "type": "vagrant",
-            "output": "packer/box/blackbox.box"
+            "output": "packer/box/black-virtualbox.box"
         }
     ]
 }
