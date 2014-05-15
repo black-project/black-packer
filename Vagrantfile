@@ -3,6 +3,14 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
+$script = <<SCRIPT
+echo I am provisioning...
+date > /etc/vagrant_provisioned_at
+
+composer self-update
+sudo -u vagrant composer global update
+SCRIPT
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.hostmanager.enabled = true
@@ -20,6 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.aliases = %w(
       black.dev
   )
+
+  config.vm.provision "shell", inline: $script
 
   config.vm.provider :virtualbox do |vb|
         vb.customize ["modifyvm", :id, "--memory", "1024"]
