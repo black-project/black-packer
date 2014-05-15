@@ -1,5 +1,4 @@
 #!/bin/sh
 
-sudo apt-get install -y mongodb-org
-
-sudo service mongod start
+apt-get install -y mongodb-org
+service mongod start

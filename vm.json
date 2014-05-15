@@ -45,6 +45,24 @@
             ]
         }
     ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "execute_command": "echo 'vagrant'| sudo -S sh '{{.Path}}'",
+            "scripts": [
+                "packer/support/scripts/base.sh",
+                "packer/support/scripts/vagrant.sh",
+                "packer/support/scripts/sources.sh",
+                "packer/support/scripts/dotdeb.sh",
+                "packer/support/scripts/composer.sh",
+                "packer/support/scripts/mariadb.sh",
+                "packer/support/scripts/mongo.sh",
+                "packer/support/scripts/apache.sh",
+                "packer/support/scripts/zerodisk.sh",
+                "packer/support/scripts/clean.sh"
+            ]
+        }
+    ],
     "post-processors": [
         {
             "type": "vagrant",

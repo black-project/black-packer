@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt-get install -y curl git
+apt-get install -y curl git
 
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
