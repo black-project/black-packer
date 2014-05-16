@@ -4,8 +4,8 @@
 
 apt-get install -y \
     nginx-full \
-    php5-fpm \
     php5-cli \
+    php5-fpm \
     php5-mysqlnd \
     php5-curl \
     php5-mcrypt \
@@ -25,5 +25,6 @@ cp /tmp/nginx-default /etc/nginx/sites-available/default
 
 # Start services
 service php5-fpm start
+service nginx start
 
 
