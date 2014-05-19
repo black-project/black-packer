@@ -45,7 +45,7 @@ Then go to your vm directory with `cd vm/`.
 
 ### Step 4: Build
 Just run `packer build vm.json` and wait.
-Then, run `vagrant hostmanager`, `vagrant up` and `vagrant ssh` :)
+Then, run `vagrant up`, `vagrant hostmanager` and `vagrant ssh` :)
 
 
 [1]: http://www.packer.io
