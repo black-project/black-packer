@@ -7,7 +7,9 @@ Build a fresh new VM for your black-project.
 
 This box runs only on virtualbox (for the moment).
 The default configuration will not share the root project directory (this is my choice) but, if you want to use vagrant
- on your root folder, don't hesitate to make your changes in `vm/Vagrantfile`
+ on your root folder, don't hesitate to make your changes in `vm/Vagrantfile`.
+ 
+If you love this project (or me), don't hesitate to [Flattr me][4] ;)
 
 ## Contribute
 
@@ -49,3 +51,4 @@ Then, run `vagrant hostmanager`, `vagrant up` and `vagrant ssh` :)
 [1]: http://www.packer.io
 [2]: https://www.virtualbox.org/wiki/Downloads
 [3]: http://www.vagrantup.com/
+[4]: https://flattr.com/profile/alexandre.balmes
