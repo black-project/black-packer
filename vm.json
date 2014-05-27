@@ -1,15 +1,31 @@
 {
     "description": "Create a fresh new VirtualMachine for your Black Project",
+    "variables": {
+        "iso_url": "http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.5.0-amd64-netinst.iso",
+        "iso_checksum": "8fdb6715228ea90faba58cb84644d296",
+        "iso_checksum_type": "md5",
+
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+
+        "shutdown": "sudo -S shutdown -h now",
+        "http_directory": "packer/support/http",
+        "boot_wait": "10s",
+
+        "box_disk": "10000",
+        "box_memory": "2048",
+        "box_cpus": "2"
+    },
     "builders": [
         {
             "type": "vmware-iso",
             "guest_os_type": "debian7-64",
-            "iso_url": "http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.5.0-amd64-netinst.iso",
-            "iso_checksum": "8fdb6715228ea90faba58cb84644d296",
-            "iso_checksum_type": "md5",
-            "ssh_username": "vagrant",
-            "ssh_password": "vagrant",
-            "shutdown_command": "sudo -S shutdown -h now",
+            "iso_url": "{{ user `iso_url` }}",
+            "iso_checksum": "{{ user `iso_checksum` }}",
+            "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+            "ssh_username": "{{ user `ssh_username` }}",
+            "ssh_password": "{{ user `ssh_password` }}",
+            "shutdown_command": "{{ user `shutdown` }}",
             "boot_command": [
                 "<esc><wait>",
                 "install <wait>",
@@ -26,23 +42,23 @@
                 "keyboard-configuration/xkb-keymap=us <wait>",
                 "<enter><wait>"
             ],
-            "http_directory": "packer/support/http",
-            "boot_wait": "10s",
-            "disk_size": 10000,
+            "http_directory": "{{ user `http_directory` }}",
+            "boot_wait": "{{ user `boot_wait` }}",
+            "disk_size": "{{ user `box_disk` }}",
             "vmx_data": {
-                "memsize": 2048,
-                "numvcpus": 1
+                "memsize": "{{ user `box_memory` }}",
+                "numvcpus": "{{ user `box_cpus` }}"
             }
         },
         {
             "type": "virtualbox-iso",
             "guest_os_type": "Debian_64",
-            "iso_url": "http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.5.0-amd64-netinst.iso",
-            "iso_checksum": "8fdb6715228ea90faba58cb84644d296",
-            "iso_checksum_type": "md5",
-            "ssh_username": "vagrant",
-            "ssh_password": "vagrant",
-            "shutdown_command": "sudo -S shutdown -h now",
+            "iso_url": "{{ user `iso_url` }}",
+            "iso_checksum": "{{ user `iso_checksum` }}",
+            "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+            "ssh_username": "{{ user `ssh_username` }}",
+            "ssh_password": "{{ user `ssh_password` }}",
+            "shutdown_command": "{{ user `shutdown` }}",
             "boot_command": [
                 "<esc><wait>",
                 "install <wait>",
@@ -59,21 +75,21 @@
                 "keyboard-configuration/xkb-keymap=us <wait>",
                 "<enter><wait>"
             ],
-            "http_directory": "packer/support/http",
-            "boot_wait": "10s",
-            "disk_size": 10000,
+            "http_directory": "{{ user `http_directory` }}",
+            "boot_wait": "{{ user `boot_wait` }}",
+            "disk_size": "{{ user `box_disk` }}",
             "vboxmanage": [
                 [
                     "modifyvm",
                     "{{.Name}}",
                     "--memory",
-                    "2048"
+                    "{{ user `box_memory` }}"
                 ],
                 [
                     "modifyvm",
                     "{{.Name}}",
                     "--cpus",
-                    "1"
+                    "{{ user `box_cpus` }}"
                 ]
             ]
         }
