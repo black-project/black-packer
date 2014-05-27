@@ -2,6 +2,39 @@
     "description": "Create a fresh new VirtualMachine for your Black Project",
     "builders": [
         {
+            "type": "vmware-iso",
+            "guest_os_type": "debian7-64",
+            "iso_url": "http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.5.0-amd64-netinst.iso",
+            "iso_checksum": "8fdb6715228ea90faba58cb84644d296",
+            "iso_checksum_type": "md5",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "shutdown_command": "sudo -S shutdown -h now",
+            "boot_command": [
+                "<esc><wait>",
+                "install <wait>",
+                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+                "debian-installer=en_US <wait>",
+                "auto <wait>",
+                "locale=en_US <wait>",
+                "kbd-chooser/method=us <wait>",
+                "netcfg/get_hostname={{ .Name }} <wait>",
+                "netcfg/get_domain=vagrantup.com <wait>",
+                "fb=false <wait>",
+                "console-setup/ask_detect=false <wait>",
+                "console-keymaps-at/keymap=us <wait>",
+                "keyboard-configuration/xkb-keymap=us <wait>",
+                "<enter><wait>"
+            ],
+            "http_directory": "packer/support/http",
+            "boot_wait": "10s",
+            "disk_size": 10000,
+            "vmx_data": {
+                "memsize": 2048,
+                "numvcpus": 1
+            }
+        },
+        {
             "type": "virtualbox-iso",
             "guest_os_type": "Debian_64",
             "iso_url": "http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-7.5.0-amd64-netinst.iso",
@@ -71,7 +104,7 @@
     "post-processors": [
         {
             "type": "vagrant",
-            "output": "packer/box/black-virtualbox.box"
+            "output": "packer/box/black-{{.Provider}}.box"
         }
     ]
 }

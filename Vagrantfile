@@ -17,7 +17,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.manage_host = true
 
   config.vm.box = "black-dev"
-  config.vm.box_url = "packer/box/black-virtualbox.box"
 
   config.vm.hostname = 'black-dev'
   config.vm.network :private_network, ip: "192.168.169.70"
@@ -31,7 +30,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", inline: $script
 
-  config.vm.provider "virtualbox" do |v|
+  config.vm.provider "vmware_fusion" do |v, override|
+    override.vm.box_url = "packer/box/black-vmware.box"
+    v.vmx["memsize"] = "1024"
+    v.vmx["numvcpus"] = "1"
+    v.vmx["displayName"] = "black-dev"
+  end
+
+  config.vm.provider "virtualbox" do |v, override|
+    override.vm.box_url = "packer/box/black-virtualbox.box"
     v.memory = "1024"
     v.cpus = "1"
     v.name = "black-dev"
