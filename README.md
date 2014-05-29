@@ -1,11 +1,10 @@
 black-packer
 ============
 
-Build a fresh new VM for your black-project.
+Build a fresh new VirtualMachine for your black-project.
 
 ## About
 
-This box runs only on virtualbox (for the moment).
 The default configuration will not share the root project directory (this is my choice) but, if you want to use vagrant
  on your root folder, don't hesitate to make your changes in `vm/Vagrantfile`.
  
@@ -46,6 +45,22 @@ Then go to your vm directory with `cd vm/`.
 ### Step 4: Build
 Just run `packer build vm.json` and wait.
 Then, run `vagrant up`, `vagrant hostmanager` and `vagrant ssh` :)
+
+## Options
+
+If you want to build your VM for vmware only, use this:
+
+```bash
+packer build --only=vmware-iso vm.json
+vagrant up --provider vmware_fusion
+```
+
+Same operation for Virtualbox:
+
+```bash
+packer build --only=virtualbox-iso vm.json
+vagrant up --provider virtualbox
+```
 
 
 [1]: http://www.packer.io

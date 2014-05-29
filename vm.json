@@ -112,6 +112,7 @@
                 "packer/support/scripts/mariadb.sh",
                 "packer/support/scripts/mongo.sh",
                 "packer/support/scripts/apache.sh",
+                "packer/support/scripts/ssh.sh",
                 "packer/support/scripts/zerodisk.sh",
                 "packer/support/scripts/clean.sh"
             ]
