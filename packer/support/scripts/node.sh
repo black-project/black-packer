@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -eux
 
 wget http://nodejs.org/dist/v0.10.28/node-v0.10.28.tar.gz
 tar xfz node-v0.10.28.tar.gz

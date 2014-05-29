@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -eux
 
 # Install Nginx and PHP from dotdeb
 

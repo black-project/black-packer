@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -eux
 
 apt-get install -y python-software-properties
 
