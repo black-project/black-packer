@@ -41,7 +41,7 @@ server {
       set  $path_info  $2;
     }
 
-    fastcgi_pass                unix:/var/run/php5-fpm.sock;
+    fastcgi_pass                unix:/var/run/php-fpm-www.sock;
 
     include                     /etc/nginx/fastcgi_params;
 
