@@ -3,7 +3,7 @@
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
-echo 'export PATH=$PATH:/home/vagrant/.composer/vendor/bin' >> /home/vagrant/.profile
+echo 'export PATH=$PATH:./bin:/home/vagrant/.composer/vendor/bin' >> /home/vagrant/.profile
 
 sudo -u vagrant composer global require psy/psysh 0.1.*
 sudo -u vagrant composer global require zerkalica/phpcs dev-master
