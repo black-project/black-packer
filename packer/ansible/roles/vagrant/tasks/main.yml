@@ -1,0 +1,34 @@
+---
+- name: Add key to vagrant user
+  user: >
+    state=present
+    name=vagrant
+    comment="Vagrant User"
+    shell=/bin/bash
+    home=/home/vagrant
+    createhome=yes
+    password={{ vagrant_password }}
+
+- name: Change permissions for ssh directory
+  file: path=/home/vagrant/.ssh owner=vagrant group=vagrant mode=0700 state=directory
+  tags: install
+
+- name: Change permissions for ssh key
+  file: path=/home/vagrant/.ssh/authorized_keys owner=vagrant group=vagrant mode=0600 state=touch
+  tags: install
+
+- name: Install vagrant key
+  shell: "curl -Lo /home/vagrant/.ssh/authorized_keys https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub"
+  sudo_user: vagrant
+  tags: install
+
+- name: Install sudo (Debian only)
+  apt: pkg=sudo state=present
+
+- name: Add vagrant to sudoers
+  lineinfile: >
+    state=present
+    dest=/etc/sudoers.d/vagrant
+    regexp="vagrant"
+    line='vagrant ALL=NOPASSWD:ALL'
+  tags: install

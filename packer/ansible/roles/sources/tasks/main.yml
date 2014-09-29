@@ -1,0 +1,52 @@
+---
+- name: Add MongoDB apt key
+  apt_key: keyserver=keyserver.ubuntu.com id=7F0CEB10 state=present
+  tags: web
+
+- name: Add MariaDB apt key
+  apt_key: url=http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xcbcb082a1bb943db state=present
+  tags: web
+
+- name: Create mongodb.list
+  file: path=/etc/apt/sources.list.d/mongodb.list state=touch
+  tags: web
+
+- name: Create mariadb.list
+  file: path=/etc/apt/sources.list.d/mariadb.list state=touch
+  tags: web
+
+- name: Create dotdeb.list
+  file: path=/etc/apt/sources.list.d/dotdeb.list state=touch
+  tags: web
+
+- name: Add Mongo package repository
+  lineinfile: dest="/etc/apt/sources.list.d/mongodb.list" line="deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen"
+  tags: web
+
+- name: Add Mariadb package repository
+  lineinfile: dest="/etc/apt/sources.list.d/mariadb.list" line="deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/debian wheezy main"
+  tags: web
+
+- name: Add Dotdeb package repository
+  lineinfile: dest="/etc/apt/sources.list.d/dotdeb.list" line="deb http://packages.dotdeb.org wheezy all"
+  tags: web
+
+- name: Add Dotdeb package repository
+  lineinfile: dest="/etc/apt/sources.list.d/dotdeb.list" line="deb-src http://packages.dotdeb.org wheezy all"
+  tags: web
+
+- name: Add Dotdeb php55 package repository
+  lineinfile: dest="/etc/apt/sources.list.d/dotdeb.list" line="deb http://packages.dotdeb.org wheezy-php55 all"
+  tags: web
+
+- name: Add Dotdeb php55 package repository
+  lineinfile: dest="/etc/apt/sources.list.d/dotdeb.list" line="deb-src http://packages.dotdeb.org wheezy-php55 all"
+  tags: web
+
+- name: Add Dotdeb key
+  apt_key: url=http://www.dotdeb.org/dotdeb.gpg state=present
+  tags: web
+
+- name: Update Apt
+  apt: update_cache=yes
+  tags: web

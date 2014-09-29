@@ -1,0 +1,12 @@
+---
+- name: Stop Apache2 service
+  service: name=apache2 state=stopped
+  tags: clean
+
+- name: Uninstall apache2
+  apt: name=apache2 state=absent
+  tags: clean
+
+- name: Remove unused files
+  file: dest=/etc/init.d/apache2 state=absent
+  tags: clean

@@ -1,0 +1,14 @@
+---
+- name: Pre-provisioning for black box
+  hosts: all
+  sudo: yes
+  roles:
+    - base
+    - vagrant
+    - sources
+    - mariadb
+    - mongo
+    - dotdeb
+    - composer
+    - apache
+    - clean

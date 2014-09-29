@@ -16,10 +16,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
 
-  config.vm.box = "black-dev"
+  config.ssh.forward_agent = true
 
-  config.vm.hostname = 'black-dev'
-  config.vm.network :private_network, ip: "192.168.169.70"
+  config.vm.box = "black-dev-test"
+
+  config.vm.hostname = 'black-dev-test'
+  config.vm.network :private_network, ip: "192.168.134.70"
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "../", "/var/www/black", type: "nfs"
@@ -34,14 +36,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     override.vm.box_url = "packer/box/black-vmware.box"
     v.vmx["memsize"] = "1024"
     v.vmx["numvcpus"] = "1"
-    v.vmx["displayName"] = "black-dev"
+    v.vmx["displayName"] = "black-dev-test"
   end
 
   config.vm.provider "virtualbox" do |v, override|
     override.vm.box_url = "packer/box/black-virtualbox.box"
     v.memory = "1024"
     v.cpus = "1"
-    v.name = "black-dev"
+    v.name = "black-dev-test"
   end
 
 end

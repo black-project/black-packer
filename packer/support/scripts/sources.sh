@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-apt-get install -y python-software-properties
+
 
 # MongoDB
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10

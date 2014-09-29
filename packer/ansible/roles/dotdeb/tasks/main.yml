@@ -1,0 +1,26 @@
+---
+- name: Install Nginx and PHP
+  apt: name={{ item }} state=present
+  with_items:
+    - nginx-full
+    - php5-cli
+    - php5-fpm
+    - php5-mysqlnd
+    - php5-curl
+    - php5-mcrypt
+    - php5-imagick
+    - php5-xdebug
+    - php5-intl
+    - php5-mongo
+  tags: web
+
+- name: Configuration files
+  file: src={{ item.src }} dest={{ item.dest }} state=touch
+  with_items:
+    - { src: '20-xdebug.ini', dest: '/etc/php5/mods-available/20-xdebug.ini' }
+    - { src: 'php-cli.ini', dest: '/etc/php5/cli/php.ini' }
+    - { src: 'php-fpm.ini', dest: '/etc/php5/fpm/php.ini' }
+    - { src: 'www.conf', dest: '/etc/php5/fpm/pool.d/www.conf' }
+  notify:
+    - restart php5-fpm
+  tags: web

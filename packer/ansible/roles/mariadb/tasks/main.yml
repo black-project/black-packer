@@ -1,0 +1,9 @@
+---
+- name: Configure MariaDB
+  command: "debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password password root'"
+  command: "debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password_again password root'"
+  tags: web
+
+- name: Install MariaDB
+  apt: name=mariadb-server update_cache=yes state=present
+  tags: web

@@ -1,0 +1,38 @@
+---
+- name: Remove essentials
+  apt: name=build-essential state=absent
+  with_items:
+    - linux-headers-$(uname -r)
+  tags: clean
+
+- name: Remove linux-headers
+  shell: "apt-get install -y linux-headers-$(uname -r)"
+  tags: clean
+
+- name: Autoremove
+  shell: apt-get autoremove -y
+  tags: clean
+
+- name: Clean
+  shell: apt-get clean
+  tags: clean
+
+- name: Cleanup DHCP leases
+  file: dest=/var/lib/dhcp/* state=absent
+  tags: clean
+
+- name: Add udev rule
+  file: dest=/etc/udev/rules.d/70-persistent-net.rules state=touch
+  tags: clean
+
+- name: Remove unused udev files
+  file: dest={{ item }} state=absent
+  with_items:
+    - /dev/.udev
+    - /lib/udev/rules.d/75-persistent-net-generator.rule
+  tags: clean
+
+- name: Make dhclient happy
+  lineinfile: "state=absent dest=/etc/network/interfaces
+  line='pre-up sleep 2'"
+  tags: clean

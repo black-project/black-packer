@@ -1,0 +1,33 @@
+---
+- name: Remove Use DNS
+  lineinfile: "state=absent dest=/etc/ssh/sshd_config
+  line='UseDNS no'"
+  tags: install
+
+- name: Set default timeout to VM"
+  lineinfile: "state=present dest=/etc/default/grub
+  regexp='^GRUB_TIMEOUT=0$'
+  line='GRUB_TIMEOUT=0'"
+  tags: install
+
+- name: Set installer
+  lineinfile: "state=present dest=/etc/default/grub
+  regexp='^GRUB_CMDLINE_LINUX=\"\"$'
+  line='GRUB_CMDLINE_LINUX=\"debian-installer=en_US\"'"
+  tags: install
+
+- name: Update grub
+  command: update-grub
+  tags: install
+
+- name: Update date
+  shell: date > /etc/vagrant_box_build_time
+  tags: install
+
+- name: Created Motd
+  file: path=/var/run/motd state=touch
+  tags: install
+
+- name: Customize message of the day
+  lineinfile: dest=/var/run/motd line="Welcome to your Black virtual machine."
+  tags: install
