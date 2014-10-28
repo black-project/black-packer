@@ -39,7 +39,7 @@ vagrant plugin install vagrant-vbguest
 
 ### Step 3: Clone this repository
 
-Go to your project folder in your terminal and clone this repostory with `git submodule add git@github.com:black-project/black-packer.git vm`.
+Go to your project folder in your terminal and clone this repository with `git submodule add git@github.com:black-project/black-packer.git vm`.
 Then go to your vm directory with `cd vm/`.
 
 ### Step 4: Build
