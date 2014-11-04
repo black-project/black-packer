@@ -15,7 +15,7 @@
   tags: web
 
 - name: Configuration files
-  file: src={{ item.src }} dest={{ item.dest }} state=touch
+  copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
     - { src: '20-xdebug.ini', dest: '/etc/php5/mods-available/20-xdebug.ini' }
     - { src: 'php-cli.ini', dest: '/etc/php5/cli/php.ini' }
