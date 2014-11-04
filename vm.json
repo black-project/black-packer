@@ -114,7 +114,8 @@
                 "packer/ansible/roles/dotdeb",
                 "packer/ansible/roles/composer",
                 "packer/ansible/roles/sources",
-                "packer/ansible/roles/vagrant"
+                "packer/ansible/roles/vagrant",
+                "packer/ansible/roles/sendmail"
             ]
         },
         {
