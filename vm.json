@@ -115,7 +115,8 @@
                 "packer/ansible/roles/composer",
                 "packer/ansible/roles/sources",
                 "packer/ansible/roles/vagrant",
-                "packer/ansible/roles/sendmail"
+                "packer/ansible/roles/sendmail",
+                "packer/ansible/roles/git"
             ]
         },
         {

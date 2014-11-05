@@ -7,6 +7,7 @@
     - vagrant
     - sources
     - sendmail
+    - git
     - mariadb
     - mongo
     - dotdeb
