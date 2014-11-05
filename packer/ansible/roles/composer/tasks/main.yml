@@ -14,7 +14,7 @@
 - name: Add composer to locale profile
   lineinfile: "state=present dest=/home/vagrant/.profile
   regexp='^PATH=$PATH:./bin$'
-  line='PATH=$PATH:./bin:/home/vagrant/.composer/vendor/bin'"
+  line='PATH=$PATH:./bin:./node_modules/.bin:/home/vagrant/.composer/vendor/bin'"
   tags: web
 
 - name: Install composer package
