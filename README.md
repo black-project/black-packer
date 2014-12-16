@@ -32,9 +32,16 @@ The default Nginx work for a Symfony project.
 We need some Vagrant plugins for your convenience. In your terminal, use these commands:
 
 ```
+vagrant plugin install landrush
 vagrant plugin install vagrant-hostmanager
 vagrant plugin install vagrant-hostsupdater
 vagrant plugin install vagrant-vbguest
+```
+
+For Windows users:
+
+```
+vagrant plugin install vagrant-winnfsd
 ```
 
 ### Step 3: Clone this repository

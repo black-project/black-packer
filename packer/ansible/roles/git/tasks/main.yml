@@ -7,19 +7,19 @@
   tags: git
 
 - name: Get last stable version
-  get_url: url=https://github.com/git/git/archive/v2.1.3.tar.gz dest=/tmp/
+  get_url: url=https://github.com/git/git/archive/v2.2.0.tar.gz dest=/tmp/v2.2.0.tar.gz
   tags: git
 
 - name: Extract last stable version
-  unarchive: src=/tmp/v2.1.3.tar.gz dest=/tmp/v2.1.3
+  command: tar -xvzf /tmp/v2.2.0.tar.gz chdir=/tmp/ creates=/tmp/git-2.2.0/README warn=true
   tags: git
 
 - name: Install last stable version
-  shell: cd /tmp/v2.1.3/ && make prefix=/usr/local all && make prefix=/usr/local install && cd ~
+  command: make prefix=/usr/local all chdir=/tmp/git-2.2.0
   tags: git
 
-- name: Ignorecase
-  shell: git config --unset-all core.ignorecase && git config --system core.ignorecase false
+- name: Install last stable version (2)
+  command: make prefix=/usr/local install chdir=/tmp/git-2.2.0
   tags: git
 
 - name: Copy default gitconfig

@@ -109,14 +109,15 @@
                 "packer/ansible/roles/apache",
                 "packer/ansible/roles/base",
                 "packer/ansible/roles/clean",
+                "packer/ansible/roles/composer",
+                "packer/ansible/roles/dotdeb",
+                "packer/ansible/roles/git",
                 "packer/ansible/roles/mariadb",
                 "packer/ansible/roles/mongo",
-                "packer/ansible/roles/dotdeb",
-                "packer/ansible/roles/composer",
+                "packer/ansible/roles/ohmyzsh",
+                "packer/ansible/roles/postfix",
                 "packer/ansible/roles/sources",
-                "packer/ansible/roles/vagrant",
-                "packer/ansible/roles/sendmail",
-                "packer/ansible/roles/git"
+                "packer/ansible/roles/vagrant"
             ]
         },
         {

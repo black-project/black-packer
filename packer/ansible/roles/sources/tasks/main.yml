@@ -24,7 +24,7 @@
   tags: web
 
 - name: Add Mariadb package repository
-  lineinfile: dest="/etc/apt/sources.list.d/mariadb.list" line="deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/debian wheezy main"
+  lineinfile: dest="/etc/apt/sources.list.d/mariadb.list" line="deb http://nwps.ws/pub/mariadb/repo/10.0/debian/ wheezy main"
   tags: web
 
 - name: Add Dotdeb package repository

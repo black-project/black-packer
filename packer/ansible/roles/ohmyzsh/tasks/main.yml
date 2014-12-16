@@ -1,0 +1,19 @@
+---
+- name: Install Zsh
+  apt: name={{ item }} state=present
+  with_items:
+    - zsh
+  tags: zsh
+
+- name: Install OhMyZsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/.oh-my-zsh
+  tags: zsh
+
+- name: Copy template
+  template: src=zshrc.j2 dest=/home/vagrant/.zshrc
+  sudo_user: vagrant
+  tags: zsh
+
+- name: Change shell
+  user: name=vagrant shell=/bin/zsh
+  tags: zsh

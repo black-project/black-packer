@@ -15,13 +15,12 @@
   tags: web
 
 - name: Configuration files
-  copy: src={{ item.src }} dest={{ item.dest }}
+  template: src={{ item.src }} dest={{ item.dest }}
   with_items:
-    - { src: '20-xdebug.ini', dest: '/etc/php5/mods-available/20-xdebug.ini' }
-    - { src: 'php-cli.ini', dest: '/etc/php5/cli/php.ini' }
-    - { src: 'php-fpm.ini', dest: '/etc/php5/fpm/php.ini' }
-    - { src: 'www.conf', dest: '/etc/php5/fpm/pool.d/www.conf' }
-    - { src: 'nginx-default', dest: '/etc/nginx/sites-available/default' }
+    - { src: '20-xdebug.ini.j2', dest: '/etc/php5/mods-available/xdebug.ini' }
+    - { src: 'php-cli.ini.j2', dest: '/etc/php5/cli/php.ini' }
+    - { src: 'php-fpm.ini.j2', dest: '/etc/php5/fpm/php.ini' }
+    - { src: 'www.conf.j2', dest: '/etc/php5/fpm/pool.d/www.conf' }
   notify:
     - restart php5-fpm
   tags: web

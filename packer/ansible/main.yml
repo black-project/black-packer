@@ -5,12 +5,13 @@
   roles:
     - base
     - vagrant
+    - apache
     - sources
-    - sendmail
     - git
+    - ohmyzsh
+    - postfix
     - mariadb
     - mongo
     - dotdeb
     - composer
-    - apache
     - clean
