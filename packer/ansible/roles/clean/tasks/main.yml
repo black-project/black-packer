@@ -1,4 +1,11 @@
 ---
+- name: Install Resolvconf and Dnsmasq
+  apt: name={{ item }} state=present
+  with_items:
+    - resolvconf
+    - dnsmasq
+  tags: clean
+
 - name: Remove essentials
   apt: name=build-essential state=absent
   with_items:

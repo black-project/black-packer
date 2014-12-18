@@ -1,6 +1,6 @@
 ---
-- name: Install sendmail
+- name: Install postfix
   apt: name={{ item }} state=present
   with_items:
-    - sendmail-bin
+    - postfix
   tags: sendmail
