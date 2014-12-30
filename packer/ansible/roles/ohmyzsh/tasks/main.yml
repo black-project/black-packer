@@ -6,7 +6,11 @@
   tags: zsh
 
 - name: Install OhMyZsh
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/.oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/
+  tags: zsh
+
+- name: Move OhMyZsh
+  shell: mv /home/vagrant/oh-my-zsh /home/vagrant/.oh-my-zsh
   tags: zsh
 
 - name: Copy template
